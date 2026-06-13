@@ -1,9 +1,9 @@
 # Video Game Metascore Prediction Engine
 
 ## Overview
-This project is an end-to-end Machine Learning pipeline designed to predict a video game's Metacritic score based on features such as metascore, userscore, and genres. 
+This project is an end-to-end machine learning pipeline that predicts a video game’s Metacritic score using features such as user score, genre, platform, and playtime.
 
-This engine uses a data sets merged and cleaned from three different sources. The model uses SHAP values offering insights as to why the engine makes certain predictions.
+The dataset was constructed by cleaning and merging over 140,000 records from three sources. A Random Forest Regressor is used for prediction, with SHAP values providing interpretability into feature impact
 
 ## The Problem & Solution
 * **The Problem:** Predicting the critical success of a video game is notoriously difficult due to subjective factors. Furthermore, gaming data is heavily fragmented across different websites with inconsistent naming conventions.
@@ -11,9 +11,9 @@ This engine uses a data sets merged and cleaned from three different sources. Th
 
 ## Data Sources
 The final dataset was engineered by joining three distinct sources:
-* **Metacritic:** Critic scores, user scores and general game info. About ~11,000+ records
-* **HowLongToBeat (HLTB):** List of developers, release year and average player completion times (Main Story, Completionist, etc.). About ~51000+ records, 25 features
-* **GameFAQs:** Platform details, About ~82,000+ records.
+* **Metacritic:** Critic scores, user scores and general game info. About ~11,000 records
+* **HowLongToBeat (HLTB):** List of developers, release year and average player completion times (Main Story, Completionist, etc.). About ~51000 records, 25 features
+* **GameFAQs:** Platform details, About ~82,000 records.
 
 ## Skills & Technologies Used
 * **Languages:** Python
@@ -88,16 +88,16 @@ After release, *Call of Duty: Black Ops 7* received a Metacritic score of **65**
 While the model overestimated the point prediction by approximately 11.6 points, the actual score safely fell within the model's predicted 90% confidence interval (63–88).
 
 ### Key Takeaway
-This example highlights both the strengths and limitations of predictive modeling in  media. The model successfully identified a  score range based on quantitative metrics, but the difference between the predicted and actual score reinforces the core finding of this project: **human opinions are inherently subjective.**
+This example highlights both the strengths and limitations of predictive modeling in media. The model successfully identified a  score range based on quantitative metrics, but the difference between the predicted and actual score reinforces the core finding of this project: **human opinions are inherently subjective.**
 
 ## Challenges 
 * **Issue one: Redundant Genre Labels:** The raw data contains overlapping genre columns (e.g. “Action", “Action-Adventure”, “Adventure”). Treating these as separate would dilute their importance.
   * **Solution:** We engineered a `merge_column` function to consolidate these genres into definitive categories. We also wrote validation logic to ensure rows didn't lose genre data during the data merge, dropping rows only if they lacked all genre information.
 
-* **Issue two: Missing Data:** The merged data sets had null values and dropping the rows would mean we would lose a lot of data.
+* **Issue two: Missing Data:** The merged datasets had null values and dropping the rows would mean we would lose a lot of data.
   * **Solution:** For critical missing features like "Playtime," we dropped rows to avoid noise. For other numeric fields, we imputed missing values using the column median or average to maintain distribution integrity.
 
-* **Issue 3: Model Underfitting:** Our Initial Linear Regression model yielded an R² of only 0.51, indicating it wasn't capturing the full complexity of the data.
+* **Issue three: Model Underfitting:** Our initial Linear Regression model yielded an R² of only 0.51, indicating it wasn't capturing the full complexity of the data.
   * **Solution:** We switched to a Random Forest Regressor. This non-linear model was better able to handle the complex interactions between platform, genre, and playtimes.
 
 
