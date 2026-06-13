@@ -85,10 +85,10 @@ The model identified several factors that contributed positively and negatively 
 ### Actual Outcome
 After release, *Call of Duty: Black Ops 7* received a Metacritic score of **65**.
 
-While the model overestimated the point prediction by approximately 11.6 points, the actual score safely fell within the model's predicted 90% confidence interval (63–88).
+While the model overestimated the point prediction by approximately 11.6 points, the actual score fell within the model's predicted 90% confidence interval (63–88).
 
 ### Key Takeaway
-This example highlights both the strengths and limitations of predictive modeling in media. The model successfully identified a  score range based on quantitative metrics, but the difference between the predicted and actual score reinforces the core finding of this project: **human opinions are inherently subjective.**
+This example highlights both the strengths and limitations of predictive modeling in media. The model successfully identified a score range based on quantitative metrics, but the difference between the predicted and actual score reinforces the core finding of this project: **human opinions are inherently subjective.**
 
 ## Challenges 
 * **Issue one: Redundant Genre Labels:** The raw data contains overlapping genre columns (e.g. “Action", “Action-Adventure”, “Adventure”). Treating these as separate would dilute their importance.
