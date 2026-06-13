@@ -49,6 +49,46 @@ Our model explains roughly 55% of the variance in a game's score based on quanti
 
 <img width="852" height="545" alt="randomres" src="https://github.com/user-attachments/assets/e6ff6a5c-adfa-482d-b08a-e556c993e506" />
 
+## Model Validation: Predicting an Unreleased Game
+To evaluate the model's practical usefulness, we tested it against a game that had not yet received a Metacritic score at the time of prediction: *Call of Duty: Black Ops 7*.
+
+### Prediction Results (Pre-Release)
+| Metric | Value |
+| :--- | :--- |
+| **Predicted Metacritic Score** | 76.6 |
+| **90% Prediction Interval** | 63.0 – 88.0 |
+| **Standard Deviation** | 6.94 |
+
+The Random Forest model predicted a score of 76.6, while estimating that 90% of its decision paths agreed the final score would likely fall between 63 and 88. The relatively small standard deviation suggested moderate confidence in the prediction.
+
+### SHAP Explanation
+The model identified several factors that contributed positively and negatively to the baseline prediction:
+
+**Features Increasing the Score**
+| Feature | SHAP Impact |
+| :--- | :--- |
+| Release Year | +1.35 |
+| PC Platform | +0.96 |
+| FPS Genre | +0.59 |
+| First-Person Perspective | +0.33 |
+| Difficulty Rating | +0.29 |
+
+**Features Lowering the Score**
+| Feature | SHAP Impact |
+| :--- | :--- |
+| Main Story Length | -0.65 |
+| Third-Person Elements | -0.14 |
+| Side Scroller | -0.06 |
+| Open World | -0.04 |
+| Sandbox | -0.03 |
+
+### Actual Outcome
+After release, *Call of Duty: Black Ops 7* received a Metacritic score of **65**.
+
+While the model overestimated the point prediction by approximately 11.6 points, the actual score safely fell within the model's predicted 90% confidence interval (63–88).
+
+### Key Takeaway
+This example highlights both the strengths and limitations of predictive modeling in  media. The model successfully identified a  score range based on quantitative metrics, but the difference between the predicted and actual score reinforces the core finding of this project: **human opinions are inherently subjective.**
 
 ## Challenges 
 * **Issue one: Redundant Genre Labels:** The raw data contains overlapping genre columns (e.g. “Action", “Action-Adventure”, “Adventure”). Treating these as separate would dilute their importance.
