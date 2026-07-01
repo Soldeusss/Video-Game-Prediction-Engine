@@ -1,5 +1,5 @@
 # Video Game Metascore Prediction Engine
-
+https://public.tableau.com/views/VideoGameMetacritic_Analysis/Sheet1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
 ## Overview
 This project is an end-to-end machine learning pipeline that predicts a video game’s Metacritic score using features such as user score, genre, platform, and playtime.
 
